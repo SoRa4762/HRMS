@@ -1,6 +1,11 @@
-import { useState, type ChangeEvent, type FormEvent } from "react";
-import type { ISignUpData } from "../interfaces/IAuth";
-import { signUpService } from "../services/auth";
+import {
+  useState,
+  type ChangeEvent,
+  type FormEvent,
+  type SelectHTMLAttributes,
+} from "react";
+import type { ISignUpData } from "../../interfaces/IAuth";
+import { signUpService } from "../../services/auth";
 import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
@@ -9,6 +14,7 @@ const SignUp = () => {
     username: "",
     mobileNo: "",
     email: "",
+    role: "",
     password: "",
     confirmPassword: "",
   });
@@ -29,7 +35,9 @@ const SignUp = () => {
     }
   };
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setSignUpForm((prev) => ({ ...prev, [name]: value }));
   };
@@ -69,6 +77,22 @@ const SignUp = () => {
               handleChange(e);
             }}
           />
+
+          <p>Role</p>
+          <select
+            // onChange={(e) => {
+            //   setSignUpForm((prev) => ({...prev, []}))
+            // }}
+            name="role"
+            onChange={(e) => {
+              handleChange(e);
+            }}
+          >
+            <option value="">Select Your Role</option>
+            <option value="admin">Admin</option>
+            <option value="manager">Manager</option>
+            <option value="employee">Employee</option>
+          </select>
 
           <p>Password</p>
           <input

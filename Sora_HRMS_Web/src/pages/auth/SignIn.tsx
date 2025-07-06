@@ -1,10 +1,10 @@
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import { useDispatch } from "react-redux";
-import type { ISignInData } from "../interfaces/IAuth";
-import { userSignInThunk } from "../features/userSlice";
-import type { AppDispatch } from "../store";
+import type { ISignInData } from "../../interfaces/IAuth";
+import { userSignInThunk } from "../../features/userSlice";
+import type { AppDispatch } from "../../store";
 import { useNavigate } from "react-router-dom";
-import type { IUserData } from "../interfaces/IUserData";
+import type { IUserData } from "../../interfaces/IUserData";
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -54,6 +54,7 @@ const SignIn = () => {
           />
           <p>Password</p>
           <input
+            type="password"
             placeholder="********"
             name="password"
             onChange={(e) => {

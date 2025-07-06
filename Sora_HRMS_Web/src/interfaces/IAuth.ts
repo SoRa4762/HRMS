@@ -8,6 +8,7 @@ export interface ISignUpData {
   username: string;
   mobileNo: string;
   email: string;
+  role: string;
   password: string;
   confirmPassword: string;
 }
